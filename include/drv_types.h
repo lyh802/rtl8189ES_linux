@@ -1222,7 +1222,7 @@ static inline void dev_clr_drv_stopped(struct dvobj_priv *dvobj)
 #define dev_is_drv_stopped(dvobj)		(ATOMIC_READ(&dvobj->bDriverStopped) == _TRUE)
 
 #ifdef PLATFORM_LINUX
-static struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
+static inline struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
 {
 	/* todo: get interface type from dvobj and the return the dev accordingly */
 #ifdef RTW_DVOBJ_CHIP_HW_TYPE
