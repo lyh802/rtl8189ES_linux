@@ -1624,6 +1624,7 @@ static u8 is_rtw_ndev(struct net_device *ndev)
 static int rtw_ndev_notifier_call(struct notifier_block *nb, unsigned long state, void *ptr)
 {
 	struct net_device *ndev;
+	_adapter *adapter;
 
 	if (ptr == NULL)
 		return NOTIFY_DONE;
@@ -1642,17 +1643,16 @@ static int rtw_ndev_notifier_call(struct notifier_block *nb, unsigned long state
 
 	RTW_INFO(FUNC_NDEV_FMT" state:%lu\n", FUNC_NDEV_ARG(ndev), state);
 
+	adapter = rtw_netdev_priv(ndev);
 	switch (state) {
 	case NETDEV_CHANGENAME:
 		rtw_adapter_proc_replace(ndev);
+		strncpy(adapter->old_ifname, ndev->name, IFNAMSIZ);
+		adapter->old_ifname[IFNAMSIZ - 1] = 0;
 		break;
 	#ifdef CONFIG_NEW_NETDEV_HDL
 	case NETDEV_PRE_UP :
-		{
-			_adapter *adapter = rtw_netdev_priv(ndev);
-
-			rtw_pwr_wakeup(adapter);
-		}
+		rtw_pwr_wakeup(adapter);
 		break;
 	#endif
 	}
