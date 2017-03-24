@@ -50,6 +50,7 @@ CONFIG_PCI_HCI = n
 CONFIG_SDIO_HCI = y
 CONFIG_GSPI_HCI = n
 ########################## Features ###########################
+CONFIG_NET_NS = y
 CONFIG_MP_INCLUDED = y
 CONFIG_POWER_SAVING = y
 CONFIG_IPS_MODE = default
