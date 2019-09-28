@@ -101,7 +101,7 @@ static void update_BCNTIM(_adapter *padapter)
 #endif
 	if (_TRUE) {
 		u8 *p, *dst_ie, *premainder_ie = NULL, *pbackup_remainder_ie = NULL;
-		uint offset, tmp_len, tim_ielen, tim_ie_offset, remainder_ielen;
+		uint offset, tmp_len = 0, tim_ielen = 0, tim_ie_offset, remainder_ielen;
 
 		p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, _TIM_IE_, &tim_ielen, pnetwork_mlmeext->IELength - _FIXED_IE_LENGTH_);
 		if (p != NULL && tim_ielen > 0) {
@@ -171,7 +171,7 @@ void rtw_add_bcn_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 index, u8 *d
 	u8	bmatch = _FALSE;
 	u8	*pie = pnetwork->IEs;
 	u8	*p = NULL, *dst_ie = NULL, *premainder_ie = NULL, *pbackup_remainder_ie = NULL;
-	u32	i, offset, ielen, ie_offset, remainder_ielen = 0;
+	u32	i, offset, ielen = 0, ie_offset, remainder_ielen = 0;
 
 	for (i = sizeof(NDIS_802_11_FIXED_IEs); i < pnetwork->IELength;) {
 		pIE = (PNDIS_802_11_VARIABLE_IEs)(pnetwork->IEs + i);
@@ -234,7 +234,7 @@ void rtw_add_bcn_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 index, u8 *d
 void rtw_remove_bcn_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 index)
 {
 	u8 *p, *dst_ie = NULL, *premainder_ie = NULL, *pbackup_remainder_ie = NULL;
-	uint offset, ielen, ie_offset, remainder_ielen = 0;
+	uint offset, ielen = 0, ie_offset, remainder_ielen = 0;
 	u8	*pie = pnetwork->IEs;
 
 	p = rtw_get_ie(pie + _FIXED_IE_LENGTH_, index, &ielen, pnetwork->IELength - _FIXED_IE_LENGTH_);
@@ -4295,7 +4295,7 @@ void rtw_ap_update_bss_chbw(_adapter *adapter, WLAN_BSSID_EX *bss, u8 ch, u8 bw,
 #ifdef CONFIG_80211AC_VHT
 	if (vhtpriv->vht_option == _TRUE) {
 		u8 *vht_cap_ie, *vht_op_ie;
-		int vht_cap_ielen, vht_op_ielen;
+		int vht_cap_ielen = 0, vht_op_ielen = 0;
 		u8	center_freq;
 
 		vht_cap_ie = rtw_get_ie((bss->IEs + sizeof(NDIS_802_11_FIXED_IEs)), EID_VHTCapability, &vht_cap_ielen, (bss->IELength - sizeof(NDIS_802_11_FIXED_IEs)));
@@ -4338,7 +4338,7 @@ void rtw_ap_update_bss_chbw(_adapter *adapter, WLAN_BSSID_EX *bss, u8 ch, u8 bw,
 	{
 		struct ht_priv	*htpriv = &adapter->mlmepriv.htpriv;
 		u8 *ht_cap_ie, *ht_op_ie;
-		int ht_cap_ielen, ht_op_ielen;
+		int ht_cap_ielen = 0, ht_op_ielen = 0;
 
 		ht_cap_ie = rtw_get_ie((bss->IEs + sizeof(NDIS_802_11_FIXED_IEs)), EID_HTCapability, &ht_cap_ielen, (bss->IELength - sizeof(NDIS_802_11_FIXED_IEs)));
 		ht_op_ie = rtw_get_ie((bss->IEs + sizeof(NDIS_802_11_FIXED_IEs)), EID_HTInfo, &ht_op_ielen, (bss->IELength - sizeof(NDIS_802_11_FIXED_IEs)));
