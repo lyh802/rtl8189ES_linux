@@ -633,6 +633,7 @@ u8 PS_RDY_CHECK(_adapter *padapter)
 		|| check_fwstate(pmlmepriv, WIFI_UNDER_LINKING | WIFI_UNDER_WPS)
 		|| MLME_IS_AP(padapter)
 		|| MLME_IS_MESH(padapter)
+		|| MLME_IS_MONITOR(padapter)
 		|| check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE | WIFI_ADHOC_STATE)
 		#if defined(CONFIG_P2P) && defined(CONFIG_IOCTL_CFG80211)
 		|| rtw_cfg80211_get_is_roch(padapter) == _TRUE
