@@ -482,12 +482,12 @@ void rtw_reg_notifier(struct wiphy *wiphy, struct regulatory_request *request)
 #endif
 }
 
-void rtw_reg_notify_by_driver(_adapter *adapter)
+void rtw_reg_notify_by_driver(struct wiphy *wiphy)
 {
-	if ((adapter->rtw_wdev != NULL) && (adapter->rtw_wdev->wiphy)) {
+	if (wiphy) {
 		struct regulatory_request request;
 		request.initiator = NL80211_REGDOM_SET_BY_DRIVER;
-		rtw_reg_notifier(adapter->rtw_wdev->wiphy, &request);
+		rtw_reg_notifier(wiphy, &request);
 	}
 }
 
@@ -527,10 +527,8 @@ static struct country_code_to_enum_rd *_rtw_regd_find_country(u16 countrycode)
 	return NULL;
 }
 
-int rtw_regd_init(_adapter *padapter)
+int rtw_regd_init(struct wiphy *wiphy)
 {
-	struct wiphy *wiphy = padapter->rtw_wdev->wiphy;
-
 #if 0
 	if (rtw_regd == NULL) {
 		rtw_regd = (struct rtw_regulatory *)

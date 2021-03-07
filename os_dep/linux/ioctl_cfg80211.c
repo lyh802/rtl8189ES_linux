@@ -8852,8 +8852,6 @@ void rtw_cfg80211_init_wiphy(_adapter *padapter)
 		}
 	}
 #endif
-	/* init regulary domain */
-	rtw_regd_init(padapter);
 }
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
@@ -9383,6 +9381,9 @@ int rtw_wiphy_register(struct wiphy *wiphy)
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)) || defined(RTW_VENDOR_EXT_SUPPORT)
 	rtw_cfgvendor_attach(wiphy);
 #endif
+
+	/* init regulary domain */
+	rtw_regd_init(wiphy);
 
 	return wiphy_register(wiphy);
 }
