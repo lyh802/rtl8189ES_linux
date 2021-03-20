@@ -109,6 +109,7 @@ detect_mac80211() {
 		uci -q batch <<-EOF
 			set wireless.radio${devidx}=wifi-device
 			set wireless.radio${devidx}.type=mac80211
+			set wireless.radio${devidx}.phy=${dev}
 			set wireless.radio${devidx}.country=CN
 			set wireless.radio${devidx}.channel=${channel}
 			set wireless.radio${devidx}.hwmode=11${mode_band}
