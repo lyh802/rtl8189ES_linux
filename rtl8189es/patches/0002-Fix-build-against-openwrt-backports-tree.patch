@@ -1,0 +1,20 @@
+From 8d47d6d6ffa2253b8b718e4f37e9380370cf54e8 Mon Sep 17 00:00:00 2001
+From: Ben Greear <greearb@candelatech.com>
+Date: Fri, 9 Nov 2018 16:21:43 -0800
+Subject: [PATCH] Fix build against openwrt backports tree.
+
+Like breaks builds elsewhere, can fix it up later.
+
+Signed-off-by: Ben Greear <greearb@candelatech.com>
+---
+ include/linux/{wireless.h => rtl_wireless.h} | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename include/linux/{wireless.h => rtl_wireless.h} (100%)
+
+diff --git a/include/linux/wireless.h b/include/linux/rtl_wireless.h
+similarity index 100%
+rename from include/linux/wireless.h
+rename to include/linux/rtl_wireless.h
+-- 
+2.13.1.windows.1
+

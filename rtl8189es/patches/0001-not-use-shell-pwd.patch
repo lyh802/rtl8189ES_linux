@@ -1,0 +1,25 @@
+From e792c3f720389f59b50da0c133f683efc97921c0 Mon Sep 17 00:00:00 2001
+From: youling257 <youling257@gmail.com>
+Date: Wed, 6 Feb 2019 02:20:49 +0800
+Subject: [PATCH] not use $(shell pwd)
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index f66d5f8..dab7b5d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -152,7 +152,7 @@ CONFIG_PLATFORM_RTL8197D = n
+ 
+ CONFIG_DRVEXT_MODULE = n
+ 
+-export TopDIR ?= $(shell pwd)
++export TopDIR ?= $(src)
+ 
+ ########### COMMON  #################################
+ ifeq ($(CONFIG_GSPI_HCI), y)
+-- 
+2.13.1.windows.1
+
