@@ -1,17 +1,17 @@
-From e792c3f720389f59b50da0c133f683efc97921c0 Mon Sep 17 00:00:00 2001
+From 2fa0135094b00e52bfb8ad09837cb5590332b0ac Mon Sep 17 00:00:00 2001
 From: youling257 <youling257@gmail.com>
 Date: Wed, 6 Feb 2019 02:20:49 +0800
-Subject: [PATCH] not use $(shell pwd)
+Subject: [PATCH 1/4] not use $(shell pwd)
 
 ---
  Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index f66d5f8..dab7b5d 100644
+index 9662e4e..2b42f83 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -152,7 +152,7 @@ CONFIG_PLATFORM_RTL8197D = n
+@@ -186,7 +186,7 @@ CONFIG_CUSTOMER_HUAWEI_GENERAL = n
  
  CONFIG_DRVEXT_MODULE = n
  
@@ -21,5 +21,5 @@ index f66d5f8..dab7b5d 100644
  ########### COMMON  #################################
  ifeq ($(CONFIG_GSPI_HCI), y)
 -- 
-2.13.1.windows.1
+2.32.0.windows.2
 

@@ -1,7 +1,7 @@
-From 8d47d6d6ffa2253b8b718e4f37e9380370cf54e8 Mon Sep 17 00:00:00 2001
+From 8aa824aece160dea0d3e74b5155d6f35361b3316 Mon Sep 17 00:00:00 2001
 From: Ben Greear <greearb@candelatech.com>
 Date: Fri, 9 Nov 2018 16:21:43 -0800
-Subject: [PATCH] Fix build against openwrt backports tree.
+Subject: [PATCH 3/4] Fix build against openwrt backports tree.
 
 Like breaks builds elsewhere, can fix it up later.
 
@@ -16,5 +16,5 @@ similarity index 100%
 rename from include/linux/wireless.h
 rename to include/linux/rtl_wireless.h
 -- 
-2.13.1.windows.1
+2.32.0.windows.2
 
